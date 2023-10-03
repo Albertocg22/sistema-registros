@@ -7,6 +7,8 @@ import { AlumnoModule } from './alumno/alumno.module';
 import { Coordinador } from './coordinador/coordinador.entity';
 import { Alumno } from './alumno/alumno.entity';
 import { AuthModule } from './auth/auth.module';
+import {Evento} from './eventos/eventos.entity'
+import {evento_coordinador} from './eventos/eventos-coordinador.entity'
 
 @Module({
   imports: [
@@ -15,9 +17,9 @@ import { AuthModule } from './auth/auth.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'rmb24',
-      database: 'registro_extraDB',
-      entities: [Coordinador, Alumno],
+      password: '',
+      database: 'registro',
+      entities: [Coordinador, Alumno,Evento,evento_coordinador],
       synchronize: true,
     }),
     CoordinadorModule,

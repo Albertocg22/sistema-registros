@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {evento_coordinador} from '../eventos/eventos-coordinador.entity'
+import { Evento } from 'src/eventos/eventos.entity';
 
 @Entity({ name: 'coordinador' })
 export class Coordinador {
@@ -35,4 +37,9 @@ export class Coordinador {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fechaCreacion: Date;
+
+
+  @ManyToMany(() => Evento, evento => evento.coordinadores)
+  @JoinTable({ name: 'evento_coordinador' })
+  eventos: Evento[];
 }
